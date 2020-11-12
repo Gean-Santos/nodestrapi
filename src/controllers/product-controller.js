@@ -32,6 +32,18 @@ exports.getBySlug = (req, res, next) => {
     });
 };
 
+exports.getById = (req, res, next) => {
+    Product
+    .findById(req.params.id)
+    .then(data => {
+        //recuperar parametros do corpo da requisição
+        res.status(200).send(data); 
+    })
+    .catch(e => {
+        res.status(400).send(e);
+    });
+};
+
 exports.post = (req, res, next) => {
     let product = new Product(req.body);
     product
