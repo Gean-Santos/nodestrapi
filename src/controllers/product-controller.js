@@ -14,7 +14,6 @@ exports.post = (req, res, next) => {
         .catch(e => {
             res.status(400).send({ message: 'Falha ao cadastrar o produto', data: e });
         });
-    
 };
 
 exports.put = (req, res, next) => {
