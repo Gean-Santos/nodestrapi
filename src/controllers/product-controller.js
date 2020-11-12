@@ -15,7 +15,7 @@ exports.get = (req, res, next) => {
     .catch(e => {
         res.status(400).send(e);
     });
-};
+}
 
 exports.getBySlug = (req, res, next) => {
     Product
@@ -30,7 +30,7 @@ exports.getBySlug = (req, res, next) => {
     .catch(e => {
         res.status(400).send(e);
     });
-};
+}
 
 exports.getById = (req, res, next) => {
     Product
@@ -42,7 +42,22 @@ exports.getById = (req, res, next) => {
     .catch(e => {
         res.status(400).send(e);
     });
-};
+}
+
+exports.getByTag = (req, res, next) => {
+    Product
+    .find({
+        tags: req.params.tag,
+        active: true
+    }, 'title description price slug tags'
+    )
+    .then(data => {
+        res.status(200).send(data); 
+    })
+    .catch(e => {
+        res.status(400).send(e);
+    });
+}
 
 exports.post = (req, res, next) => {
     let product = new Product(req.body);
@@ -55,7 +70,7 @@ exports.post = (req, res, next) => {
         .catch(e => {
             res.status(400).send({ message: 'Falha ao cadastrar o produto', data: e });
         });
-};
+}
 
 exports.put = (req, res, next) => {
     const id = req.params.id; // recuperar parametros da url
@@ -63,8 +78,8 @@ exports.put = (req, res, next) => {
         id: id,
         item: req.body
     });
-};
+}
 
 exports.delete = (req, res, next) => {
     res.status(200).send(req.body);
-};
+}
