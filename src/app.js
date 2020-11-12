@@ -8,7 +8,12 @@ const app = express();
 
 // Conecta ao banco
 mongoose.connect('mongodb+srv://nodestr:nodestr@cluster0.rlqes.azure.mongodb.net/NodeStore?retryWrites=true&w=majority', 
-    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, }
+    { 
+        useNewUrlParser: true, 
+        useUnifiedTopology: true, 
+        useCreateIndex: true,
+        useFindAndModify: false
+    }
 );
 
 // Carrega os Models
