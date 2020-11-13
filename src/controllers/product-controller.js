@@ -9,7 +9,6 @@ exports.get = (req, res, next) => {
          active: true 
         }, 'title price slug')
     .then(data => {
-        //recuperar parametros do corpo da requisição
         res.status(200).send(data); 
     })
     .catch(e => {
@@ -24,7 +23,6 @@ exports.getBySlug = (req, res, next) => {
         active: true 
     }, 'title description price slug tags')
     .then(data => {
-        //recuperar parametros do corpo da requisição
         res.status(200).send(data); 
     })
     .catch(e => {
@@ -36,7 +34,6 @@ exports.getById = (req, res, next) => {
     Product
     .findById(req.params.id)
     .then(data => {
-        //recuperar parametros do corpo da requisição
         res.status(200).send(data); 
     })
     .catch(e => {
@@ -64,7 +61,6 @@ exports.post = (req, res, next) => {
     product
         .save()
         .then(x => {
-            //recuperar parametros do corpo da requisição
             res.status(201).send({ message: 'Produto cadastrado com sucesso!' }); 
         })
         .catch(e => {
